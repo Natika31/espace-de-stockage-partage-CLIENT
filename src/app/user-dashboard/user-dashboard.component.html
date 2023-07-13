@@ -1,0 +1,11 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Affichage">
+    <div class="large-box mat-elevation-z4">
+      <app-file-viewer [displayedFile]="selectedFile">
+      </app-file-viewer>
+    </div>
+  </mat-tab>
+  <mat-tab label="Bibliothèque">
+    <div class="small-box mat-elevation-z4">Mes documents stockés</div>
+  </mat-tab>
+</mat-tab-group>

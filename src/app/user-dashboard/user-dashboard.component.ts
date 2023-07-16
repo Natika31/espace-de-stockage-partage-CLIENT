@@ -17,5 +17,6 @@ export class UserDashboardComponent {
     file_name: 'Titre',
     file_format: '',
     file_path: '/',
+    file_content: '',
   };
 }

@@ -3,6 +3,7 @@
     <mat-card-title data-cy="AffichageTitle">{{ displayedFile.file_name }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <pdf-viewer style="width: 400px; height: 500px" [src]="pdfSrc"></pdf-viewer>
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-actions>

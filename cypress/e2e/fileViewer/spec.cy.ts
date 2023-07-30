@@ -12,13 +12,6 @@ describe('nominal', () => {
     }).as('getFileById');
   });
   it('Displays received file title', () => {
-    // cy.intercept('http://localhost:8080/api/file?file_id=1', (req) => {
-    //   req.reply({
-    //     file_id: 1,
-    //     file_name: 'Mon fichier stocké',
-    //     file_path: '/home/',
-    //   });
-    // }).as('getStoredFileTitle');
     cy.intercept('GET', '/api/file*', (req) => {
       req.reply({
         file_id: 1,

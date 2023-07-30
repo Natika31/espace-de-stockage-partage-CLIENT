@@ -15,8 +15,6 @@ export class UserDashboardComponent {
   selectedFile: MyFile = {
     file_id: 1,
     file_name: 'Titre',
-    file_format: '',
-    file_path: '/',
-    file_content: '',
+    binary_content: '',
   };
 }

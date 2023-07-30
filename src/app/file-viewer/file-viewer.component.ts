@@ -25,9 +25,7 @@ export class FileViewerComponent implements OnInit {
   @Input() displayedFile: MyFile = {
     file_id: 0,
     file_name: 'FileViewerComponent > pas de fichier sélectionné',
-    file_format: '',
-    file_path: '/',
-    file_content: '',
+    binary_content: '',
   };
 
   pdfSrc = '';
@@ -47,7 +45,7 @@ export class FileViewerComponent implements OnInit {
     const file_id = this.displayedFile.file_id;
     this.fileService.getFileById(file_id).subscribe((file) => {
       this.displayedFile = file;
-      this.displayPdf(this.displayedFile.file_content);
+      this.displayPdf(this.displayedFile.binary_content);
     });
   }
 

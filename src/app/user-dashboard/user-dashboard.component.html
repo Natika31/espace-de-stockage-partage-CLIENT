@@ -6,6 +6,8 @@
     </div>
   </mat-tab>
   <mat-tab label="Bibliothèque">
-    <div class="small-box mat-elevation-z4">Mes documents stockés</div>
+    <div class="small-box mat-elevation-z4">
+      <app-directory-viewer [currentDirectory]="selectedDirectory"></app-directory-viewer>
+    </div>
   </mat-tab>
 </mat-tab-group>

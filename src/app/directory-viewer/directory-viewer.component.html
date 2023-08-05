@@ -11,10 +11,18 @@
 
     </mat-card-header>
     <mat-card-content>
+        <ul class="directory">
+            <ol *ngFor="let file of currentDirectory.childrenDTO">
+                <button type="button" (click)="onSelect(file)">
+                    <span class="badge">{{file.file_id}}</span>
+                    <span class="name">{{file.file_name}}</span>
+                </button>
+            </ol>
+        </ul>
         <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions>
         <button mat-button>RETOUR</button>
-        <button mat-button>AFFICHER</button>
+        <button mat-button (click)="displaySelectedFile()">AFFICHER</button>
     </mat-card-actions>
 </mat-card>

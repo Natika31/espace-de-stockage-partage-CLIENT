@@ -7,6 +7,10 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DirectoryViewerComponent } from './directory-viewer/directory-viewer.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,8 +21,11 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     HttpClientModule,
     UserDashboardComponent,
     FileViewerComponent,
-    HttpClientModule,
+    DirectoryViewerComponent,
     PdfViewerModule,
+    MatTreeModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

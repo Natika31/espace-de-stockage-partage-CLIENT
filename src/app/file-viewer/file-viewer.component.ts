@@ -24,7 +24,7 @@ export class FileViewerComponent implements OnInit {
 
   @Input() displayedFile: MyFile = {
     file_id: 0,
-    file_name: 'FileViewerComponent > pas de fichier sélectionné',
+    file_name: 'Titre',
     binary_content: '',
   };
 

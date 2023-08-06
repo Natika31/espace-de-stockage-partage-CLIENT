@@ -19,23 +19,18 @@ import { CommonModule } from '@angular/common';
 })
 export class UserDashboardComponent {
   //TODO: create parent directory and display contents
+  //le fichier sélectionné dont on veut visualiser le contenu
   fileToDisplay: MyFile = {
     file_id: 0,
     file_name: 'Titre par défaut',
     binary_content: '',
   };
-
-  selectedDirectory: Directory = {
+  //le répertoire courant dont le contenu est visualisé
+  openedDirectory: Directory = {
     directory_id: 2,
     directory_name: 'Nom du répertoire',
-    directory_local_path: '/',
-    childrenDTO: [
-      {
-        file_id: 0,
-        file_name: 'Titre',
-        binary_content: '',
-      },
-    ],
+    directory_local_path: '/home/nom_du_repertoire',
+    childrenDTO: [],
   };
 
   displayFile(file: MyFile): void {

@@ -24,11 +24,14 @@ export class FileViewerComponent implements OnInit {
 
   @Input() displayedFile: MyFile = {
     file_id: 0,
-    file_name: 'FileViewerComponent > pas de fichier sélectionné',
+    file_name: 'Titre',
     binary_content: '',
   };
 
   pdfSrc = '';
+
+  constructor(private fileService: FileService) {}
+
   displayPdf(base64: string) {
     const byteArray = new Uint8Array(
       atob(base64)
@@ -40,7 +43,6 @@ export class FileViewerComponent implements OnInit {
     this.pdfSrc = fileURL;
   }
 
-  constructor(private fileService: FileService) {}
   displayFile(): void {
     const file_id = this.displayedFile.file_id;
     this.fileService.getFileById(file_id).subscribe((file) => {

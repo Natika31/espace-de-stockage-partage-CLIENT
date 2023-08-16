@@ -5,7 +5,7 @@
 }
 
 .card {
-    width: 95vw;
+    flex-grow: 4;
 }
 
 /* DirectoryComponent's private CSS styles */

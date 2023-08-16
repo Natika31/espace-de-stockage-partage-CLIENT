@@ -3,6 +3,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FileViewerComponent } from '../file-viewer/file-viewer.component';
 import { MyFile } from '../file-viewer/MyFile';
 import { DirectoryViewerComponent } from '../directory-viewer/directory-viewer.component';
+import { FileTreeComponent } from '../file-tree/file-tree.component';
 import { Directory } from '../directory-viewer/Directory';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
     MatTabsModule,
     FileViewerComponent,
     DirectoryViewerComponent,
+    FileTreeComponent,
     CommonModule,
   ],
 })

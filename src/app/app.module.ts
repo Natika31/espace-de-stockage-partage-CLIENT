@@ -11,6 +11,7 @@ import { DirectoryViewerComponent } from './directory-viewer/directory-viewer.co
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { FileTreeComponent } from './file-tree/file-tree.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatTreeModule,
     MatIconModule,
     MatButtonModule,
+    FileTreeComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

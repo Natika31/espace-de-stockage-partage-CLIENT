@@ -10,18 +10,11 @@
 }
 
 .small-box {
-  width: 95vw;
   display: flex;
-  align-items: stretch;
-  gap: 10px;
-}
-
-.large-box {}
-
-app-file-tree {
   flex-grow: 1;
 }
 
-app-directory-viewer {
-  flex-grow: 3;
+.large-box {
+  display: flex;
+  flex-grow: 1;
 }

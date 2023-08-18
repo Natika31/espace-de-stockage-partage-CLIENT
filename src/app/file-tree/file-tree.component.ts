@@ -97,10 +97,6 @@ export class FileTreeComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    this.getFileTree();
-  }
-
   /** Transform the data to something the tree can read. */
   transformer(node: FileNode, level: number): FlatTreeNode {
     return {
@@ -131,5 +127,9 @@ export class FileTreeComponent implements OnInit {
   /** Get the children for the node. */
   getChildren(node: FileNode): FileNode[] | null | undefined {
     return node.children;
+  }
+
+  ngOnInit(): void {
+    this.getFileTree();
   }
 }

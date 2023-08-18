@@ -3,3 +3,16 @@
   padding: 20px;
 
 }
+
+.mat-mdc-card {
+  flex-grow: 1;
+}
+
+mat-card-content {
+  display: flex;
+  height: 80vh;
+}
+
+pdf-viewer {
+  flex-grow: 1;
+}

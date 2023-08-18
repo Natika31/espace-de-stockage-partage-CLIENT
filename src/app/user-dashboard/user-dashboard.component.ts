@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FileViewerComponent } from '../file-viewer/file-viewer.component';
-import { MyFile } from '../file-viewer/MyFile';
-import { DirectoryViewerComponent } from '../directory-viewer/directory-viewer.component';
-import { Directory } from '../directory-viewer/Directory';
+import { FileTreeComponent } from '../file-tree/file-tree.component';
 import { CommonModule } from '@angular/common';
+import { Item } from '../file-tree/Item';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -13,27 +12,24 @@ import { CommonModule } from '@angular/common';
   imports: [
     MatTabsModule,
     FileViewerComponent,
-    DirectoryViewerComponent,
+    FileTreeComponent,
     CommonModule,
   ],
 })
 export class UserDashboardComponent {
-  //TODO: create parent directory and display contents
-  //le fichier sélectionné dont on veut visualiser le contenu
-  fileToDisplay: MyFile = {
-    file_id: 0,
-    file_name: 'Titre par défaut',
-    binary_content: '',
-  };
-  //le répertoire courant dont le contenu est visualisé
-  openedDirectory: Directory = {
-    directory_id: 2,
-    directory_name: 'Nom du répertoire',
-    directory_local_path: '/home/nom_du_repertoire',
-    childrenDTO: [],
+  currentItem: Item = {
+    item_id: '0',
+    item_local_path: '.',
+    item_name: 'currentItem',
+    item_type: 'item',
+    children: [],
   };
 
-  displayFile(file: MyFile): void {
-    this.fileToDisplay = file;
+  onSelectFileTreeItem(selectedItem: Item) {
+    this.currentItem = selectedItem;
+  }
+
+  onCloseFileViewer(item: Item) {
+    this.currentItem = item;
   }
 }

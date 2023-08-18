@@ -10,7 +10,11 @@
 }
 
 .small-box {
-  width: 95vw;
+  display: flex;
+  flex-grow: 1;
 }
 
-.large-box {}
+.large-box {
+  display: flex;
+  flex-grow: 1;
+}

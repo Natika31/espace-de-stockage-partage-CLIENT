@@ -1,17 +1,10 @@
 <mat-tab-group dynamicHeight>
   <mat-tab label="Mes documents">
-    <div class="small-box mat-elevation-z4">
-      <!-- Par défaut (aucun fichier n'est sélectionné, la valeur par défaut de l'id de fileToDisplay est 0 ), le seul onglet qui apparait est l'onglet "Mes documents" -->
-      <app-directory-viewer [currentDirectory]="openedDirectory"
-        (selectedFile)="displayFile($event)"></app-directory-viewer>
-    </div>
+    <app-file-tree class="small-box mat-elevation-z4" (clickItem)="onSelectFileTreeItem($event)"></app-file-tree>
   </mat-tab>
-  <!-- quand un fichier est sélectionné dans le répertoire parent, l'onglet "Affichage" apparait et le contenu du fichier sélectionné est affiché -->
-  <mat-tab label="Affichage" *ngIf="fileToDisplay.file_id != 0">
-    <div class="large-box mat-elevation-z4">
-      <app-file-viewer [displayedFile]="fileToDisplay">
-      </app-file-viewer>
-    </div>
+  <mat-tab label="Affichage" *ngIf="currentItem.item_type == 'file' && currentItem.item_id != '0'">
+    <app-file-viewer class="large-box mat-elevation-z4" [currentFileId]="currentItem.item_id"
+      (isClosed)="onCloseFileViewer($event)">
+    </app-file-viewer>
   </mat-tab>
-
 </mat-tab-group>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MyFile } from './MyFile';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { FileItem } from './FileItem';
 import { HttpClientHelper } from '../../helpers/HttpClientHelper';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class FileService {
 
   constructor(private http: HttpClient) {}
 
-  getFileById(file_id: number): Observable<MyFile> {
+  getFileById(file_id: string): Observable<FileItem> {
     const url = `${this.fileUrl}?file_id=${file_id}`;
-    return this.http.get<MyFile>(url);
+    return this.http.get<FileItem>(url);
   }
 }

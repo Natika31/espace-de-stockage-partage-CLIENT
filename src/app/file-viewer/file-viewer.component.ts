@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
-import { MyFile } from './MyFile';
+import { FileItem } from './FileItem';
 import { FileService } from './file.service';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { Item } from '../file-tree/Item';
 @Component({
   selector: 'app-file-viewer',
   templateUrl: './file-viewer.component.html',
@@ -20,14 +21,20 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
   ],
 })
 export class FileViewerComponent implements OnInit {
-  //TODO: gérer les différents formats possibles
+  @Input() currentFileId: string = '0';
 
-  @Input() displayedFile: MyFile = {
-    file_id: 0,
-    file_name: 'Titre',
+  @Output() isClosed = new EventEmitter<Item>();
+
+  currentFile: FileItem = {
     binary_content: '',
+    item_id: '0',
+    item_local_path: './displayedFile.pdf',
+    item_name: 'displayedFile',
+    item_type: '',
+    children: [],
   };
 
+  //TODO: gérer les différents formats possibles
   pdfSrc = '';
 
   constructor(private fileService: FileService) {}
@@ -43,15 +50,27 @@ export class FileViewerComponent implements OnInit {
     this.pdfSrc = fileURL;
   }
 
-  displayFile(): void {
-    const file_id = this.displayedFile.file_id;
+  getFile(): void {
+    const file_id = this.currentFileId;
     this.fileService.getFileById(file_id).subscribe((file) => {
-      this.displayedFile = file;
-      this.displayPdf(this.displayedFile.binary_content);
+      this.currentFile = file;
+      this.displayPdf(this.currentFile.binary_content);
     });
   }
 
+  onClose() {
+    this.currentFile = {
+      binary_content: '',
+      item_id: '0',
+      item_local_path: './displayedFile.pdf',
+      item_name: 'displayedFile',
+      item_type: '',
+      children: [],
+    };
+    this.isClosed.emit(this.currentFile);
+  }
+
   ngOnInit(): void {
-    this.displayFile();
+    this.getFile();
   }
 }

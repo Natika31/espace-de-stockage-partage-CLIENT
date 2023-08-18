@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DirectoryService } from './directory.service';
+import { FileTreeService } from './file-tree.service';
 
-describe('DirectoryService', () => {
-  let service: DirectoryService;
+describe('FileTreeService', () => {
+  let service: FileTreeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DirectoryService);
+    service = TestBed.inject(FileTreeService);
   });
 
   it('should be created', () => {

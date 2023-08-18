@@ -6,3 +6,34 @@
 .mat-tree {
   width: 100%;
 }
+
+.mat-tree-node {
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  height: 1.8em;
+}
+
+.mat-tree-node:hover {
+  color: #405686;
+  left: .1em;
+}
+
+.mat-tree-node:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.mat-tree-node.selected {
+  background-color: black;
+  color: #a6c0fa
+}
+
+.mat-tree-node.selected:hover {
+  background-color: #505050;
+}
+
+.mat-tree-node.selected:active {
+  background-color: black;
+}

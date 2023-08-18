@@ -1,5 +1,5 @@
-export interface MyFile {
-  file_id: number;
-  file_name: string;
+import { Item } from '../file-tree/Item';
+
+export interface MyFile extends Item {
   binary_content: string;
 }

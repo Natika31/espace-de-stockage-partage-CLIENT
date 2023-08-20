@@ -13,7 +13,7 @@ import { FileTreeService } from './file-tree.service';
 export interface FileNode {
   item_id: string;
   item_local_path: string;
-  item_name: string;
+  name: string;
   item_type: string;
   children?: FileNode[];
 }
@@ -49,9 +49,9 @@ export class FileTreeComponent implements OnInit {
   dataSource: MatTreeFlatDataSource<FileNode, FlatTreeNode>;
 
   rootItem: Item = {
-    item_id: '5',
+    item_id: '1',
     item_local_path: '.',
-    item_name: 'rootItem',
+    name: 'rootItem',
     item_type: 'item',
     children: [],
   };
@@ -59,7 +59,7 @@ export class FileTreeComponent implements OnInit {
   selectedItem: Item = {
     item_id: '0',
     item_local_path: '.',
-    item_name: 'file-tree selectedItem',
+    name: 'file-tree selectedItem',
     item_type: 'item',
     children: [],
   };
@@ -82,18 +82,16 @@ export class FileTreeComponent implements OnInit {
   }
 
   getFileTree(): void {
-    this.fileTreeService
-      .getItemById(this.rootItem.item_id)
-      .subscribe((item) => {
-        this.dataSource.data = [item];
-      });
+    this.fileTreeService.getItemByName('home').subscribe((item) => {
+      this.dataSource.data = [item];
+    });
   }
 
   onClickItem(node: FlatTreeNode): void {
     this.selectedItem = {
       item_id: node.id,
       item_local_path: node.local_path,
-      item_name: node.name,
+      name: node.name,
       item_type: node.type,
       children: [],
     };
@@ -104,7 +102,7 @@ export class FileTreeComponent implements OnInit {
   transformer(node: FileNode, level: number): FlatTreeNode {
     return {
       id: node.item_id,
-      name: node.item_name,
+      name: node.name,
       local_path: node.item_local_path,
       type: node.item_type,
       level,

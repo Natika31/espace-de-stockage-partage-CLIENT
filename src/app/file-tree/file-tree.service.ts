@@ -15,4 +15,9 @@ export class FileTreeService {
     const url = `${this.itemUrl}?item_id=${item_id}`;
     return this.http.get<Item>(url);
   }
+
+  getItemByName(name: string): Observable<Item> {
+    const url = `${this.itemUrl}/name?name=${name}`;
+    return this.http.get<Item>(url);
+  }
 }

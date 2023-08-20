@@ -29,7 +29,7 @@ export class FileViewerComponent implements OnInit {
     binary_content: '',
     item_id: '0',
     item_local_path: './displayedFile.pdf',
-    item_name: 'displayedFile',
+    name: 'displayedFile',
     item_type: '',
     children: [],
   };
@@ -63,7 +63,7 @@ export class FileViewerComponent implements OnInit {
       binary_content: '',
       item_id: '0',
       item_local_path: './displayedFile.pdf',
-      item_name: 'displayedFile',
+      name: 'displayedFile',
       item_type: '',
       children: [],
     };

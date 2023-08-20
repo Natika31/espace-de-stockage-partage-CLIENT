@@ -20,7 +20,7 @@ export class UserDashboardComponent {
   currentItem: Item = {
     item_id: '0',
     item_local_path: '.',
-    item_name: 'currentItem',
+    name: 'currentItem',
     item_type: 'item',
     children: [],
   };

@@ -11,6 +11,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FileTreeComponent } from './file-tree/file-tree.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { FileTreeComponent } from './file-tree/file-tree.component';
     MatIconModule,
     MatButtonModule,
     FileTreeComponent,
+    SearchComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

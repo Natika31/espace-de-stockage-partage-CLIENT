@@ -1,5 +1,6 @@
 <mat-tab-group dynamicHeight>
-  <mat-tab label="Mes documents">
+  <mat-tab label="Recherche">
+    <app-search class="small-box mat-elevation-z4"></app-search>
     <app-file-tree class="small-box mat-elevation-z4" (clickItem)="onSelectFileTreeItem($event)"></app-file-tree>
   </mat-tab>
   <mat-tab label="Affichage" *ngIf="currentItem.item_type == 'file' && currentItem.item_id != '0'">

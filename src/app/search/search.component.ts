@@ -30,9 +30,9 @@ export class SearchComponent {
     children: [],
   };
 
-  @Output() clickSearch = new EventEmitter<string>();
+  @Output() clickSearch = new EventEmitter<Item>();
 
   onClickSearch(): void {
-    this.clickSearch.emit(this.searchedItem.name);
+    this.clickSearch.emit(this.searchedItem);
   }
 }

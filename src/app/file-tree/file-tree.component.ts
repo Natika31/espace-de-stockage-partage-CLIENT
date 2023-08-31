@@ -49,7 +49,7 @@ export class FileTreeComponent implements OnInit {
   /** The MatTreeFlatDataSource connects the control and flattener to provide data. */
   dataSource: MatTreeFlatDataSource<FileNode, FlatTreeNode>;
 
-  rootItem: Item = {
+  @Input() rootItem: Item = {
     item_id: '1',
     item_local_path: '.',
     name: 'home',
@@ -82,14 +82,18 @@ export class FileTreeComponent implements OnInit {
     );
   }
 
-  onSearchItem(searchedItemName: string) {
-    this.rootItem.name = searchedItemName;
+  public updateFileTree(value: FileNode[]) {
+    this.dataSource.data = value;
+  }
+
+  onSearchItem(searchedItem: Item) {
+    this.rootItem = searchedItem;
     this.getFileTree();
   }
 
   getFileTree(): void {
     this.fileTreeService.getItemByName(this.rootItem.name).subscribe((item) => {
-      this.dataSource.data = [item];
+      this.updateFileTree([item]);
     });
   }
 
@@ -101,10 +105,6 @@ export class FileTreeComponent implements OnInit {
       item_type: node.type,
       children: [],
     };
-    console.log(
-      'FileTreeComponent > (click)="onClickNode(node)" > this.selectedItem = node = ',
-      this.selectedItem
-    );
     this.clickItem.emit(this.selectedItem);
   }
 

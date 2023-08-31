@@ -25,8 +25,8 @@ export class UserDashboardComponent {
     children: [],
   };
 
-  onClickItem(selectedItemId: string) {
-    this.currentItem.item_id = selectedItemId;
+  onClickItem(selectedItem: Item) {
+    this.currentItem = selectedItem;
   }
 
   onCloseFileViewer(item: Item) {

@@ -65,7 +65,7 @@ export class FileTreeComponent implements OnInit {
     children: [],
   };
 
-  @Output() clickItem = new EventEmitter<string>();
+  @Output() clickItem = new EventEmitter<Item>();
 
   constructor(private fileTreeService: FileTreeService) {
     this.treeFlattener = new MatTreeFlattener(
@@ -105,7 +105,7 @@ export class FileTreeComponent implements OnInit {
       'FileTreeComponent > (click)="onClickNode(node)" > this.selectedItem = node = ',
       this.selectedItem
     );
-    this.clickItem.emit(this.selectedItem.item_id);
+    this.clickItem.emit(this.selectedItem);
   }
 
   /** Transform the data to something the tree can read. */

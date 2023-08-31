@@ -4,7 +4,6 @@ import { FileViewerComponent } from '../file-viewer/file-viewer.component';
 import { FileTreeComponent } from '../file-tree/file-tree.component';
 import { CommonModule } from '@angular/common';
 import { Item } from '../file-tree/Item';
-import { SearchComponent } from '../search/search.component';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -14,21 +13,20 @@ import { SearchComponent } from '../search/search.component';
     MatTabsModule,
     FileViewerComponent,
     FileTreeComponent,
-    SearchComponent,
     CommonModule,
   ],
 })
 export class UserDashboardComponent {
   currentItem: Item = {
     item_id: '0',
-    item_local_path: '.',
-    name: 'currentItem',
-    item_type: 'item',
+    item_local_path: './home',
+    name: 'home',
+    item_type: 'folder',
     children: [],
   };
 
-  onSelectFileTreeItem(selectedItem: Item) {
-    this.currentItem = selectedItem;
+  onClickItem(selectedItemId: string) {
+    this.currentItem.item_id = selectedItemId;
   }
 
   onCloseFileViewer(item: Item) {

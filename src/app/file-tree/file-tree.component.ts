@@ -65,7 +65,7 @@ export class FileTreeComponent implements OnInit {
     children: [],
   };
 
-  @Output() clickItem = new EventEmitter<Item>();
+  @Output() clickItem = new EventEmitter<string>();
 
   constructor(private fileTreeService: FileTreeService) {
     this.treeFlattener = new MatTreeFlattener(
@@ -93,7 +93,7 @@ export class FileTreeComponent implements OnInit {
     });
   }
 
-  onClickItem(node: FlatTreeNode): void {
+  onClickNode(node: FlatTreeNode): void {
     this.selectedItem = {
       item_id: node.id,
       item_local_path: node.local_path,
@@ -101,7 +101,11 @@ export class FileTreeComponent implements OnInit {
       item_type: node.type,
       children: [],
     };
-    this.clickItem.emit(this.selectedItem);
+    console.log(
+      'FileTreeComponent > (click)="onClickNode(node)" > this.selectedItem = node = ',
+      this.selectedItem
+    );
+    this.clickItem.emit(this.selectedItem.item_id);
   }
 
   /** Transform the data to something the tree can read. */

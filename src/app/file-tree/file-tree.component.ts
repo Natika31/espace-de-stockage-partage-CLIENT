@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
@@ -8,6 +8,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { Item } from './Item';
 import { FileTreeService } from './file-tree.service';
+import { SearchComponent } from '../search/search.component';
 
 /** File node data with possible child nodes. */
 export interface FileNode {
@@ -36,7 +37,7 @@ export interface FlatTreeNode {
   templateUrl: './file-tree.component.html',
   styleUrls: ['./file-tree.component.css'],
   standalone: true,
-  imports: [MatTreeModule, MatIconModule],
+  imports: [MatTreeModule, MatIconModule, SearchComponent],
 })
 export class FileTreeComponent implements OnInit {
   /** The TreeControl controls the expand/collapse state of tree nodes.  */
@@ -48,11 +49,11 @@ export class FileTreeComponent implements OnInit {
   /** The MatTreeFlatDataSource connects the control and flattener to provide data. */
   dataSource: MatTreeFlatDataSource<FileNode, FlatTreeNode>;
 
-  rootItem: Item = {
+  @Input() rootItem: Item = {
     item_id: '1',
     item_local_path: '.',
-    name: 'rootItem',
-    item_type: 'item',
+    name: 'home',
+    item_type: 'folder',
     children: [],
   };
 
@@ -81,13 +82,22 @@ export class FileTreeComponent implements OnInit {
     );
   }
 
+  public updateFileTree(value: FileNode[]) {
+    this.dataSource.data = value;
+  }
+
+  onSearchItem(searchedItem: Item) {
+    this.rootItem = searchedItem;
+    this.getFileTree();
+  }
+
   getFileTree(): void {
-    this.fileTreeService.getItemByName('home').subscribe((item) => {
-      this.dataSource.data = [item];
+    this.fileTreeService.getItemByName(this.rootItem.name).subscribe((item) => {
+      this.updateFileTree([item]);
     });
   }
 
-  onClickItem(node: FlatTreeNode): void {
+  onClickNode(node: FlatTreeNode): void {
     this.selectedItem = {
       item_id: node.id,
       item_local_path: node.local_path,

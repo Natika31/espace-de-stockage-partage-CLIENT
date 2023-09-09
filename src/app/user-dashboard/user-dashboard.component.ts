@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FileViewerComponent } from '../file-viewer/file-viewer.component';
 import { FileTreeComponent } from '../file-tree/file-tree.component';
@@ -17,15 +17,15 @@ import { Item } from '../file-tree/Item';
   ],
 })
 export class UserDashboardComponent {
-  currentItem: Item = {
+  @Input() currentItem: Item = {
     item_id: '0',
-    item_local_path: '.',
-    name: 'currentItem',
-    item_type: 'item',
+    item_local_path: './home',
+    name: 'home',
+    item_type: 'folder',
     children: [],
   };
 
-  onSelectFileTreeItem(selectedItem: Item) {
+  onClickItem(selectedItem: Item) {
     this.currentItem = selectedItem;
   }
 

@@ -37,3 +37,8 @@
 .mat-tree-node.selected:active {
   background-color: black;
 }
+
+app-search {
+  display: inline-flex;
+  width: 100%;
+}

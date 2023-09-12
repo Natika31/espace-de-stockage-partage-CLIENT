@@ -88,12 +88,8 @@ export class FileTreeComponent implements OnInit {
   }
 
   onSearchItem(searchedItem: Item) {
-    //$..[?(@.name == 'Jack')]
     this.rootItem = searchedItem;
-    let options = jp.query(this.rootItem, "$..[?(@.name == 'Natacha')]");
-
-    console.log('onSearchItem: ', options);
-
+    // let options = jp.query(this.rootItem, "$..[?(@.name == 'Natacha')]");
     this.getFileTree();
   }
 

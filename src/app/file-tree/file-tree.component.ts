@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Item } from './Item';
 import { FileTreeService } from './file-tree.service';
 import { SearchComponent } from '../search/search.component';
+import jp from 'jsonpath';
 
 /** File node data with possible child nodes. */
 export interface FileNode {
@@ -87,7 +88,12 @@ export class FileTreeComponent implements OnInit {
   }
 
   onSearchItem(searchedItem: Item) {
+    //$..[?(@.name == 'Jack')]
     this.rootItem = searchedItem;
+    let options = jp.query(this.rootItem, "$..[?(@.name == 'Natacha')]");
+
+    console.log('onSearchItem: ', options);
+
     this.getFileTree();
   }
 

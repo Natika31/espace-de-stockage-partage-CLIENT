@@ -5,7 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Item } from '../file-tree/Item';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgFor } from '@angular/common';
+import jp from 'jsonpath';
 
 @Component({
   selector: 'app-search',
@@ -19,6 +22,9 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatButtonModule,
     FormsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgFor,
   ],
 })
 export class SearchComponent {
@@ -29,6 +35,18 @@ export class SearchComponent {
     item_type: 'item',
     children: [],
   };
+  myControl = new FormControl('');
+
+  options: string[] = [
+    'home',
+    'Natacha',
+    'Henri Salvador',
+    'Dans mon ile',
+    'The Beatles',
+    'Jack',
+    'Johnny',
+  ];
+  //options = jp.query(this.root, '$.[*].name');
 
   @Output() clickSearch = new EventEmitter<Item>();
 

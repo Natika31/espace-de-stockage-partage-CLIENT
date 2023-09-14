@@ -4,6 +4,7 @@ import { FileViewerComponent } from '../file-viewer/file-viewer.component';
 import { FileTreeComponent } from '../file-tree/file-tree.component';
 import { CommonModule } from '@angular/common';
 import { Item } from '../file-tree/Item';
+import { RecipientListComponent } from '../recipient-list/recipient-list.component';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -14,6 +15,7 @@ import { Item } from '../file-tree/Item';
     FileViewerComponent,
     FileTreeComponent,
     CommonModule,
+    RecipientListComponent,
   ],
 })
 export class UserDashboardComponent {

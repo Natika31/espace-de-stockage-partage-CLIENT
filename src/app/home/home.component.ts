@@ -9,7 +9,7 @@ import { UserService } from './user.service';
 })
 export class HomeComponent {
   currentUser: myUser = {
-    user_id: '1',
+    recipient_id: '1',
     name: 'user name',
     mail: 'user@me',
     item_type: 'user',
@@ -20,14 +20,17 @@ export class HomeComponent {
       item_type: 'folder',
       children: [],
     },
+    children: [],
   };
 
   constructor(private userService: UserService) {}
 
   getUserData(): void {
-    this.userService.getUserById(this.currentUser.user_id).subscribe((user) => {
-      this.setCurrentUser(user);
-    });
+    this.userService
+      .getUserById(this.currentUser.recipient_id)
+      .subscribe((user) => {
+        this.setCurrentUser(user);
+      });
   }
 
   public getCurrentUser(): myUser {
@@ -35,10 +38,6 @@ export class HomeComponent {
   }
   public setCurrentUser(value: myUser) {
     this.currentUser = value;
-    console.log(
-      'HomeComponent > setCurrentUser(value: myUser) > user: ',
-      this.currentUser
-    );
   }
 
   ngOnInit(): void {

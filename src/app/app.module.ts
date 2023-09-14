@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FileTreeComponent } from './file-tree/file-tree.component';
 import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
+import { RecipientListComponent } from './recipient-list/recipient-list.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -31,6 +32,7 @@ import { HomeComponent } from './home/home.component';
     MatButtonModule,
     FileTreeComponent,
     SearchComponent,
+    RecipientListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

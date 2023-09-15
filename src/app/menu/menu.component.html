@@ -1,0 +1,13 @@
+<header>
+    <mat-toolbar class="toolbar">
+        <button mat-icon-button class="icon" aria-label="icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Espace de Stockage Partagé</span>
+        <span class="spacer"></span>
+        <a mat-icon-button *ngIf="isLoggedIn" class="nav-link" href="/logout" (click)=handleLogout()>
+            <mat-icon>logout</mat-icon>
+        </a>
+    </mat-toolbar>
+
+</header>

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { FileViewerComponent } from './file-viewer/file-viewer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,9 +15,12 @@ import { FileTreeComponent } from './file-tree/file-tree.component';
 import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
 import { RecipientListComponent } from './recipient-list/recipient-list.component';
+import { LoginComponent } from './login/login.component';
+import { HttpInterceptorService } from './login/HttpInterceptorService';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, LoginComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -33,8 +36,15 @@ import { RecipientListComponent } from './recipient-list/recipient-list.componen
     FileTreeComponent,
     SearchComponent,
     RecipientListComponent,
+    MenuComponent,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

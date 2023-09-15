@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { myUser } from './myUser';
 import { UserService } from './user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   currentUser: myUser = {
     recipient_id: '1',
     name: 'user name',
@@ -23,7 +24,11 @@ export class HomeComponent {
     children: [],
   };
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   getUserData(): void {
     this.userService
